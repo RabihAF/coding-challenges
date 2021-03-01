@@ -48,7 +48,7 @@ let twoSumHashTable = function (nums, target) {
 
     for (let i = 0; i < nums.length; i++) {
         const otherHalf = target - nums[i];
-        if (numsHashMap[otherHalf] && numsHashMap[otherHalf] != i) {
+        if (numsHashMap[otherHalf] && numsHashMap[otherHalf] !== i) {
             return [i, numsHashMap[otherHalf]];
         }
     }
@@ -63,7 +63,8 @@ let twoSumHashTableOneLoop = function (nums, target) {
     numsHashMap = {};
     for (let i = 0; i < nums.length; i++) {
         const otherHalf = target - nums[i];
-        if (numsHashMap[otherHalf] != undefined) {
+        // if (numsHashMap[otherHalf] !== undefined) {
+        if (otherHalf in numsHashMap) {
             return [numsHashMap[otherHalf], i];
         }
         numsHashMap[nums[i]] = i;
